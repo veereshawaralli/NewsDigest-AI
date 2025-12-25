@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NewsDigest AI</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- Animated Background -->
+<div class="bg-animation"></div>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header>
+        <h1>📰 NewsDigest AI</h1>
+        <p>AI-Powered News Article Summarization (Text & URL)</p>
+    </header>
+
+    <!-- INPUT SECTION -->
+    <section class="glass input-section">
+        <form action="/summarize" method="post" onsubmit="showLoader()">
+
+            <textarea
+                name="article"
+                id="article"
+                placeholder="Paste full news article text OR paste article link here..."
+                required
+                oninput="countWords()"
+            >{{ article if article else "" }}</textarea>
+
+            <div class="info-bar">
+                <span id="wordCount">0 words</span>
+                <button type="submit">✨ Generate Summary</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- OUTPUT SECTION -->
+    {% if summary %}
+    <section class="glass output-section fade-in">
+        <h2>🧠 AI-Generated Summary</h2>
+        <p>{{ summary }}</p>
+    </section>
+    {% endif %}
+
+    <!-- LOADER -->
+    <div id="loader" class="loader hidden">
+        <div class="spinner"></div>
+        <p>Analyzing article with AI…</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2025 NewsDigest AI • NLP & Transformer-Based System  
+            <br>
+            Developed for Academic & Research Use
+        </p>
+    </footer>
+
+</div>
+
+<!-- JavaScript -->
+<script src="/static/script.js"></script>
+
+</body>
+</html>
